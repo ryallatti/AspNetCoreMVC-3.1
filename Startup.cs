@@ -47,7 +47,7 @@ namespace BookStore
                 //    await context.Response.WriteAsync("Hello World!");
                 //});
 
-               // this routing  points only to the Home controller
+               // this routing  points default to the Home controller
                 endpoints.MapDefaultControllerRoute();
             });
             //Custom middleware
