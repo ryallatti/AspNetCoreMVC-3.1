@@ -12,17 +12,39 @@
 </head>
 <body>
     <h1>Welcome to Book store Application</h1>
-    <h6>Razor Multiline syntax </h6>
-    @{ 
-        int a = 10;
-        int b = 20;
-        int sum = a + b;
+    @{
+        int a = 9;
+        int b = 5;
     }
-    <h2>@sum</h2>
+    @if (a > 5)
+    {
+        a++;
+        <p>hello from if block</p>
+        <p>vlaue = @a </p>
+    }
+    else
+    {
+        <p>hello from else block</p>
+        <p>vlaue = @a </p>
+        a = a + 2;
+    }
+    <h4>@a</h4>
+    <h4>ternary - @(a==10 ? b = 20:b=2)</h4>
+    <h3>@b</h3>
 
-    <h5>my email id is - ry@gmail.com</h5>
+    @switch (a)
+    {
+        case 1:<h1>I am 1</h1>
+            break;
+        case 2: <h1>I am 2</h1>
+            break;
+        case 3: <h1>I am 8</h1>
+            break;
+        case 10: <h1>I am 10</h1>
+            break;
+        default: <h1>I am default</h1>
+            break;
+    }
 
-    <h4>Escape sequence -  means need to display @*@*@ to any word</h4>
-    <h3>Example of Escape sequence - @@twitter</h3> @*it uses only one @*@
 </body>
 </html>
