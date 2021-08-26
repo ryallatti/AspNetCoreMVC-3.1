@@ -13,11 +13,12 @@ namespace BookStore.Controllers
             // accessing views from different location and view name is different than the action method 
             // using two types of access 
             //1.FullPath  (file extension is mandatory)
-           // return View("TempView/Index.cshtml"); OR return View("~/TempView/Index.cshtml");
+            // return View("TempView/Index.cshtml"); OR return View("~/TempView/Index.cshtml");
 
             //2. relative Path
 
-            return View("../../TempView/Index");
+            // return View("../../TempView/Index");
+            return View();
             
         }
         public ViewResult Aboutus()
