@@ -10,6 +10,11 @@
 
 	<ItemGroup>
 	  <Folder Include="Views\Shared\" />
+	  <Folder Include="wwwroot\js\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="wwwroot\images\logo.png" />
 	</ItemGroup>
 
 </Project>
