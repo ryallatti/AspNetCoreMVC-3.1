@@ -12,39 +12,16 @@
 </head>
 <body>
     <h1>Welcome to Book store Application</h1>
-    @{
-        int a = 9;
-        int b = 5;
-    }
-    @if (a > 5)
+    @for (int i = 0; i < 5; i++)
     {
-        a++;
-        <p>hello from if block</p>
-        <p>vlaue = @a </p>
+        <h1>Welcome to Book store Application</h1>
     }
-    else
+    @{ 
+        var list = new List<int>() { 1, 2, 3, 4, 5 };
+    }
+    @foreach(var item in list)
     {
-        <p>hello from else block</p>
-        <p>vlaue = @a </p>
-        a = a + 2;
+        <h5>@item</h5>
     }
-    <h4>@a</h4>
-    <h4>ternary - @(a==10 ? b = 20:b=2)</h4>
-    <h3>@b</h3>
-
-    @switch (a)
-    {
-        case 1:<h1>I am 1</h1>
-            break;
-        case 2: <h1>I am 2</h1>
-            break;
-        case 3: <h1>I am 8</h1>
-            break;
-        case 10: <h1>I am 10</h1>
-            break;
-        default: <h1>I am default</h1>
-            break;
-    }
-
 </body>
 </html>
