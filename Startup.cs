@@ -32,12 +32,7 @@ namespace BookStore
 
             app.UseStaticFiles(); // middleware to use static files
 
-            //this is for when we use static files from other than wwwroot folder
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "DummyStaticFiles")),
-                RequestPath = "/DummyStaticFiles"
-            }); ;
+            
 
             //Enabling Routing 
             app.UseRouting();
