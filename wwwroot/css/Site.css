@@ -4,11 +4,23 @@
     height: 200px;
     width: 200px;
 }
-
+/* sticky footer styles...........................*/
+html{
+    position:relative;
+    min-height:100%;
+}
+body{
+    /*margin bottom from footer*/
+    margin-bottom:60px; 
+}
 .footer{
-    position:absolute;
+    position:relative;
     bottom:0;
     width:100%;
     white-space:nowrap;
     line-height:60px !important;
+}
+.img-responsive {
+    width: auto;
+    height: 400px;
 }

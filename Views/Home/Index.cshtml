@@ -1,8 +1,4 @@
 ﻿
-@{
-    Layout = "_Layout";
-}
-
 
 <section class="jumbotron text-center">
     <div class="container">
@@ -57,7 +53,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                    <img src="~/images/book.jpg" alt="book" class="card-img-top"/>
+                    <img src="~/images/book.jpg" alt="book" class="card-img-top" />
 
                     <div class="card-body">
 
@@ -75,3 +71,12 @@
         </div>
     </div>
 </div>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            //alert("hello script");
+        });
+    </script>
+}
