@@ -1,13 +1,9 @@
-﻿@{
+﻿@*@{
     ViewData["Title"] = "About Us";
-}
+}*@
 
-@ViewData["Property1"]
-<h3>This is about page of the application</h3>
-@{
-    //in case of complex type casting is important since its not dynamic type
-    var bookInfo = ViewData["Book"] as BookModel;
+@{ 
+    var book = ViewData["book"] as BookModel;
 }
-
-<h4>@bookInfo.Id</h4>
-<h5>@bookInfo.Author</h5>
+@book.Id
+@book.Title
