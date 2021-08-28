@@ -2,7 +2,9 @@
 @model BookModel
 
 
-
+@{
+    ViewData["Title"] = "Book Details";
+}
 
 
 <div class="container">
@@ -73,29 +75,29 @@
     <div class="py-5 bg-light">
         <h4 class="h4">similar books</h4>
         <div class="row">
-            @for(int i=0;i < 5; i++)
+            @for (int i = 0; i < 5; i++)
             {
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
 
 
-                    <img src="~/images/book.jpg" alt="book" class="card-img-top" />
-                    <div class="card-body">
+                        <img src="~/images/book.jpg" alt="book" class="card-img-top" />
+                        <div class="card-body">
 
-                        <p class="card-text">This section will be used to display the short decription of book.</p>
-                        <div class="d-flex justify-content-between align-content-center">
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
+                            <p class="card-text">This section will be used to display the short decription of book.</p>
+                            <div class="d-flex justify-content-between align-content-center">
+                                <div class="btn-group">
+                                    <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
+                                </div>
+                                <small class="text-muted">Author name</small>
                             </div>
-                            <small class="text-muted">Author name</small>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
             }
 
 
         </div>
     </div>
-    </div>
+</div>

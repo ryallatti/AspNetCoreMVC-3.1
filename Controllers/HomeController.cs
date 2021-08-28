@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Dynamic;
+using BookStore.Models;
 
 namespace BookStore.Controllers
 {
@@ -10,19 +12,17 @@ namespace BookStore.Controllers
     {
         public ViewResult Index()
         {
-            // accessing views from different location and view name is different than the action method 
-            // using two types of access 
-            //1.FullPath  (file extension is mandatory)
-            // return View("TempView/Index.cshtml"); OR return View("~/TempView/Index.cshtml");
-
-            //2. relative Path
-
-            // return View("../../TempView/Index");
+            //dynamic data = new ExpandoObject();
+            //data.id = 3;
+            //data.Name = "rekha";
+            //ViewBag.data = data;
             return View();
             
         }
         public ViewResult Aboutus()
         {
+            ViewData["Property1"] = "Nitish";
+            ViewData["Book"] = new BookModel() { Id = 1, Author = "Rekha" };
             return View();
         }
         public ViewResult ContactUs()
