@@ -20,6 +20,11 @@ namespace BookStore
         {
             //adding MVC  to application 
             services.AddControllersWithViews();
+            // this is for rutime compilation for razor pages and also installed runtime compilation Package from nuget manager
+            //this increase the performance issue so we need to add this conditionally using preprocesser directory
+#if DEBUG
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,12 +37,7 @@ namespace BookStore
 
             app.UseStaticFiles(); // middleware to use static files
 
-            //this is for when we use static files from other than wwwroot folder
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "DummyStaticFiles")),
-                RequestPath = "/DummyStaticFiles"
-            }); ;
+            
 
             //Enabling Routing 
             app.UseRouting();

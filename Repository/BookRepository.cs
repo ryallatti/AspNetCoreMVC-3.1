@@ -25,11 +25,12 @@ namespace BookStore.Repository
         {
             return new List<BookModel>()
             {
-                new BookModel(){Id = 1, Title="Core",Author="Joy"},
-                new BookModel(){Id = 2, Title="MVC",Author="Roy"},
-                new BookModel(){Id = 3, Title="C#",Author="John"},
-                new BookModel(){Id = 4, Title="Java",Author="Aryan"},
-                new BookModel(){Id = 5, Title="Angular",Author="atharva"}
+                new BookModel(){Id = 1, Title="Asp.Net Core MVC",Author="Joy",Description="This is Core Book",Category="Programming",TotalPages=200, Language="English"},
+                new BookModel(){Id = 2, Title="MVC",Author="Roy",Description="This is MVC Book",Category="Programming",TotalPages=398, Language="English"},
+                new BookModel(){Id = 3, Title="C#",Author="John", Description="This is C# Book",Category="Developer",TotalPages=547, Language="English"},
+                new BookModel(){Id = 4, Title="Java",Author="Aryan", Description="This is Java Book",Category="Concept",TotalPages=100, Language="English"},
+                new BookModel(){Id = 5, Title="Angular",Author="atharva",Description="This is Angular Book",Category="Programming",TotalPages=190, Language="English"},
+                new BookModel(){Id = 6, Title="Azure",Author="Yuva",Description="This is Azure Book",Category="Programming",TotalPages=123, Language="English"}
             };
 
         }

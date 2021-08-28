@@ -1,21 +1,91 @@
 ﻿
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
 }
 
-<!DOCTYPE html>
+@{
+    var data = ViewBag.data;
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/css/Site.css" rel="stylesheet" />
-</head>
-<body>
-    <h1>Welcome to Book store Application</h1>
+@*@data.id  @data.Name*@
 
-    <img src="~/images/logo.png" alt="logo" class="logo"/>
-    @*Accessing static files from other folders not wwwroot*@ 
-    <img src ="~/DummyStaticFiles/dummy.png" alt="dummy"/>
-</body>
-</html>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1>Welcome to Bookstore</h1>
+        <p class="lead text-muted">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <p>
+            <a href="#" class="btn btn-primary my-2">Search books</a>
+        </p>
+    </div>
+</section>
+
+<div class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <h1> Top books</h1>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+
+                    <img src="~/images/book.jpg" alt="book" class="card-img-top" />
+                    <div class="card-body">
+
+                        <p class="card-text">This section will be used to display the short decription of book.</p>
+                        <div class="d-flex justify-content-between align-content-center">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
+                            </div>
+                            <small class="text-muted">Author name</small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+
+
+                    <img src="~/images/book.jpg" alt="book" class="card-img-top" />
+                    <div class="card-body">
+
+                        <p class="card-text">This section will be used to display the short decription of book.</p>
+                        <div class="d-flex justify-content-between align-content-center">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
+                            </div>
+                            <small class="text-muted">Author name</small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="~/images/book.jpg" alt="book" class="card-img-top" />
+
+                    <div class="card-body">
+
+                        <p class="card-text">This section will be used to display the short decription of book.</p>
+                        <div class="d-flex justify-content-between align-content-center">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
+                            </div>
+                            <small class="text-muted">Author name</small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            //alert("hello script");
+        });
+    </script>
+}

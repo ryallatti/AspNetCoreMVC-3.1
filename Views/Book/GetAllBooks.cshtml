@@ -1,16 +1,34 @@
 ﻿
+@*we are using dynamic view so its dynamic so no need to add directive*@ 
+@*@model IEnumerable<BookModel>*@
+
 @{
-    Layout = null;
-    
+    ViewData["Title"] = "Get All Books";
 }
+<div class="container">
+    <h3 class="display-3">All Books</h3>
+    <div class="row">
+        @foreach (var book in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
 
-<!DOCTYPE html>
+                    <img src="~/images/book.jpg" alt="book" class="card-img-top" />
+                    <div class="card-body">
+                        <h3 class="card-title">@book.Title</h3>
+                        <p class="card-text">@book.Description</p>
+                        <div class="d-flex justify-content-between align-content-center">
+                            <div class="btn-group">
+                                <a href="/book/GetBookDetails/@book.Id" class="btn btn-sm btn-outline-secondary">View Details</a>
+                            </div>
+                            <small class="text-muted">@book.Author</small>
+                        </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>GetAllBooks</title>
-</head>
-<body>
-</body>
-</html>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>
