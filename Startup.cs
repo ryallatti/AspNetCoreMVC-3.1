@@ -1,6 +1,8 @@
+using BookStore.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
@@ -18,10 +20,11 @@ namespace BookStore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //adding MVC  to application 
+            services.AddDbContext<BookStoreContext>(options => options.UseSqlServer("Server=.\\SQLEXPRESS;Database=BookStore;Integrated Security=True;"));
+
+
             services.AddControllersWithViews();
-            // this is for rutime compilation for razor pages and also installed runtime compilation Package from nuget manager
-            //this increase the performance issue so we need to add this conditionally using preprocesser directory
+        
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
 #endif
