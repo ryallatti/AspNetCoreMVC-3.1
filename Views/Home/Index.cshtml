@@ -12,27 +12,7 @@
 <section class="jumbotron text-center">
     <div class="container">
         <h1>Welcome to Bookstore</h1>
-        @*Name environment tag helpers*@
-        <environment names="Development">
-            <h1>Development</h1>
-        </environment>
-        <environment names="Production;Staging">
-            @*Its works for both environments*@
-            <h1>Production</h1>
-        </environment>
-        @*Include environment tag helpers*@
-        <environment include="Development">
-            <h1>Development</h1>
-        </environment>
-        <environment include="Production;Staging">
-            @*Its works for both environments*@
-            <h1>Production</h1>
-        </environment>
-        @*Exclude attribute*@
-        <environment include="Development">
-            @*Its works for both environments*@
-            <h1>Production</h1>
-        </environment>
+   
         <p class="lead text-muted">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
