@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace BookStore.Controllers
 {
     public class BookController : Controller
@@ -19,11 +20,13 @@ namespace BookStore.Controllers
         {
             return View();
         }
+       
         public ViewResult GetAllBooks()
         {
             var data = _bookRepository.GetAllBooks();
             return View(data);
         }
+        [Route("boook-details/id", Name = "bookDetailsRoute")]
         public ViewResult GetBookDetails(int id)
         {
             var details = _bookRepository.GetBookById(id);

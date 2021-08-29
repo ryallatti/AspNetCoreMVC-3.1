@@ -12,7 +12,7 @@
         <nav class="navbar navbar-dark navbar-toggleable-md bg-dark navbar-expand-sm border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" href="/">
-                    <img src="~/images/bookstorelogo.png" alt="bookstorelogo" width="40" height="40" />
+                    <img src="~/images/bookstorelogo.png" alt="bookstorelogo" width="40" height="40" asp-append-version="true"/>
                     Book Store
                 </a>
               
@@ -29,16 +29,19 @@
                     </ul>
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/">Home</a>
+                            <a class="nav-link text-white" asp-controller="home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/home/Aboutus">About</a>
+                            <a class="nav-link text-white" asp-controller="home" asp-action="Aboutus">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/home/ContactUs">Contact</a>
+                            <a class="nav-link text-white" asp-controller="home" asp-action="ContactUs">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/Book/GetAllBooks">Books</a>
+                            <a class="nav-link text-white" asp-controller="Book" asp-action="GetAllBooks">Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-protocol="http" asp-host="google.com" target="_blank">Google</a>
                         </li>
                     </ul>
                 </div>
