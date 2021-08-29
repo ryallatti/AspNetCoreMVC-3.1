@@ -3,27 +3,18 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewData["Title"] | Book Store Application</title>
-    @*<environment include="Development">*@
-        <link href="~/css/Site.css" rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
-    @*</environment>*@
-@*<environment exclude="Development">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.10.0/dist/css/bootstrap.min.css" 
-          asp-fallback-href="https://cdn.jsdelivr.net/npm/bootstrap@5.10.0/dist/css/bootstrap.min.css" asp-fallback-test-class="" asp-fallback-test-property=""
-          rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
-</environment>*@
+    <link href="~/css/Site.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-dark navbar-toggleable-md bg-dark navbar-expand-sm border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" href="/">
-                    <img src="~/images/bookstorelogo.png" alt="bookstorelogo" width="40" height="40" asp-append-version="true"/>
+                    <img src="~/images/bookstorelogo.png" alt="bookstorelogo" width="40" height="40" asp-append-version="true" />
                     Book Store
                 </a>
-              
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -33,9 +24,12 @@
                         <li class="nav-item">
                             <a class="btn btn-outline-primary">Login</a>
                             <a class="btn btn-primary">Register</a>
+
                         </li>
+                     
                     </ul>
                     <ul class="navbar-nav flex-grow-1">
+
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-controller="home" asp-action="Index">Home</a>
                         </li>
@@ -49,7 +43,13 @@
                             <a class="nav-link text-white" asp-controller="Book" asp-action="GetAllBooks">Books</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-protocol="http" asp-host="google.com" target="_blank">Google</a>
+                            <a class="nav-link text-white" asp-controller="Book" asp-action="AddNewbook">Add Book</a>
+                        </li>
+
+                        <li class="nav-item">
+                            @*<a class="nav-link text-white" asp-protocol="https" asp-host="microsoft.com" asp-controller="Home" asp-action="About" target="_blank">Microsoft</a>*@ 
+                            <a class="nav-link text-white" asp-protocol="https" asp-host="microsoft.com" target="_blank">Microsoft</a>
+
                         </li>
                     </ul>
                 </div>
@@ -57,17 +57,30 @@
         </nav>
 
     </header>
-    <main role="main">
+    <main class="fullPage py-5" role="main">
         @RenderBody()
     </main>
-    <footer class="border-top footer text-muted text-center">
+    <footer class="page-footer border-top footer text-muted text-center">
         <div class="container">
             Copyright &copy; Book Store @DateTime.Now.Year
         </div>
 
     </footer>
+   
+
+
     <script src="~/lib/jquery/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     @RenderSection("scripts", required: false)
+    @*<script>
+        $(document).ready(function () {
+            var docHeight = $(window).height();
+            var footerHeight = $(".footer").height();
+            var footerTop = $('.footer').position().top + footerHeight;
+            if (footerTop < docHeight)
+               $("footer").css('margin-top', 0 + (docHeight - footerHeight) + 'px');
+         
+        });
+    </script>*@
 </body>
 </html>

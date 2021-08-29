@@ -12,6 +12,9 @@ namespace BookStore.Controllers
     public class BookController : Controller
     {
         private readonly BookRepository _bookRepository= null;
+
+        [ViewData]
+        public string Title { get; set; }
         public BookController()
         {
             _bookRepository = new BookRepository();
@@ -36,6 +39,17 @@ namespace BookStore.Controllers
         {
 
             return _bookRepository.SearchBook(title, Author);
+        }
+        public ViewResult AddNewbook()
+        {
+            Title = "Add New Book";
+            return View();
+        }
+        [HttpPost]
+        public ViewResult AddNewbook(BookModel book)
+        {
+           
+            return View();
         }
     }
 }
