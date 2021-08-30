@@ -59,6 +59,7 @@ namespace BookStore.Controllers
                 }
                
             }
+            ModelState.AddModelError("InvalidError", "ModelState is invalid");
             return View();
 
         }

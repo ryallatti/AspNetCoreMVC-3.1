@@ -13,6 +13,8 @@
 
     @*if action name and post action name is same then no need to add action attribute in form tag and same as controller*@
     <form method="post" asp-action="AddNewbook">
+     @*ModelOnly, All, None*@
+        <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="Title"></label>
             <input asp-for="Title" class="form-control" autocomplete="off" />
