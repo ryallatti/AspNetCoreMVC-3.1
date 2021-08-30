@@ -15,40 +15,46 @@ namespace BookStore.Controllers
 
         [ViewData]
         public string Title { get; set; }
-        public BookController()
+        public BookController(BookRepository bookRepository)
         {
-            _bookRepository = new BookRepository();
+            _bookRepository = bookRepository;
         }
         public IActionResult Index()
         {
             return View();
         }
        
-        public ViewResult GetAllBooks()
+        public async Task<ViewResult> GetAllBooks()
         {
-            var data = _bookRepository.GetAllBooks();
+            var data = await _bookRepository.GetAllBooks();
             return View(data);
         }
         [Route("boook-details/id", Name = "bookDetailsRoute")]
-        public ViewResult GetBookDetails(int id)
+        public async Task<ViewResult> GetBookDetails(int id)
         {
-            var details = _bookRepository.GetBookById(id);
+            var details = await _bookRepository.GetBookById(id);
             return View(details) ;
         }
-        public List<BookModel> SearchBooks(string title, string Author)
+        public async Task<List<BookModel>> SearchBooks(string title, string Author)
         {
 
-            return _bookRepository.SearchBook(title, Author);
+            return await _bookRepository.SearchBook(title, Author);
         }
-        public ViewResult AddNewbook()
+        public ViewResult AddNewbook(bool isSuccess = false, int bookId = 0)
         {
             Title = "Add New Book";
+            ViewBag.IsSuccess = isSuccess;
+            ViewBag.bookId = bookId;
             return View();
         }
         [HttpPost]
-        public ViewResult AddNewbook(BookModel book)
+        public async Task<IActionResult> AddNewbook(BookModel book)
         {
-           
+            int id = await _bookRepository.AddNewBook(book);
+            if(id > 0)
+            {
+                return RedirectToAction(nameof(AddNewbook), new { isSuccess = true , bookId = id});
+            }
             return View();
         }
     }

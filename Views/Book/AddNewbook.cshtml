@@ -2,11 +2,20 @@
 @model BookModel
 <div class="container">
     <h1 class="display-6">Add New Book</h1>
+    @if (ViewBag.IsSuccess == true)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations!</strong> You should added new book successfully.<br />
+            Click <a asp-controller="book" asp-action="GetBookDetails" asp-route-id="@ViewBag.bookId">here</a> to view the details
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
     @*if action name and post action name is same then no need to add action attribute in form tag and same as controller*@
     <form method="post" asp-action="AddNewbook">
         <div class="form-group">
             <label asp-for="Title"></label>
-            <input asp-for="Title" class="form-control" autocomplete="off"/>
+            <input asp-for="Title" class="form-control" autocomplete="off" />
         </div>
         <div class="form-group">
             <label asp-for="Author"></label>
@@ -28,7 +37,7 @@
             <label asp-for="Language"></label>
             <input asp-for="Language" class="form-control" />
         </div>
-      <br/>
+        <br />
         <div class="form-group">
             <input type="submit" value="Add book" class="btn btn-primary" />
         </div>
