@@ -105,7 +105,7 @@ namespace BookStore.Repository
                 Author = model.Author,
                 Title = model.Title,
                 CreatedOn = model.CreatedOn,
-                TotalPages = model.TotalPages,
+                TotalPages = model.TotalPages.HasValue ? model.TotalPages.Value : 0,
                 UpdatedOn = DateTime.UtcNow
             };
            await _context.Books.AddAsync(newBook);

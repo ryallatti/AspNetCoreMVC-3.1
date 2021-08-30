@@ -50,12 +50,17 @@ namespace BookStore.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNewbook(BookModel book)
         {
-            int id = await _bookRepository.AddNewBook(book);
-            if(id > 0)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(AddNewbook), new { isSuccess = true , bookId = id});
+                int id = await _bookRepository.AddNewBook(book);
+                if (id > 0)
+                {
+                    return RedirectToAction(nameof(AddNewbook), new { isSuccess = true, bookId = id });
+                }
+               
             }
             return View();
+
         }
     }
 }
