@@ -21,6 +21,8 @@ namespace BookStore.Models
         [Display(Name = "Total Pages of book")]
         public int? TotalPages { get; set; }
         public string Language { get; set; }
+        [Required(ErrorMessage = "Please choose the Languages of your book")]
+        public List<string> MultiLanguage { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
     }

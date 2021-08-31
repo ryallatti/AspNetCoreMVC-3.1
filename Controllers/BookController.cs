@@ -55,15 +55,13 @@ namespace BookStore.Controllers
             //    Text = x.Name,
             //    Value = x.Id
             //});
-            var group1 = new SelectListGroup() { Name = "group 1" , Disabled = true};
-            var group2 = new SelectListGroup() { Name = "group 2" };
-            var group3 = new SelectListGroup() { Name = "group 3" };
+         
             ViewBag.Language = new List<SelectListItem>()
             {
-                new SelectListItem(){Value ="1", Text="Hindi" , Group= group1 },
-                 new SelectListItem(){Value ="2", Text="English",Group= group1 },
-                  new SelectListItem(){Value ="3", Text="Dutch", Group= group2 },
-                 new SelectListItem(){Value ="4", Text="Spanish",Group= group2 }
+                new SelectListItem(){Value ="1", Text="Hindi"},
+                 new SelectListItem(){Value ="2", Text="English" },
+                  new SelectListItem(){Value ="3", Text="Dutch" },
+                 new SelectListItem(){Value ="4", Text="Spanish"}
             };
 
             Title = "Add New Book";
@@ -83,14 +81,14 @@ namespace BookStore.Controllers
                 }
                
             }
-
-            //  ViewBag.Language = new SelectList(GetAllLanguage(), "Id", "Name");
-            ViewBag.Language = GetAllLanguage().Select(x => new SelectListItem()
+            ViewBag.Language = new List<SelectListItem>()
             {
-                Text = x.Name,
-                Value = x.Id
-            });
-            //  ModelState.AddModelError("InvalidError", "ModelState is invalid");
+                new SelectListItem(){Value ="1", Text="Hindi"},
+                 new SelectListItem(){Value ="2", Text="English" },
+                  new SelectListItem(){Value ="3", Text="Dutch" },
+                 new SelectListItem(){Value ="4", Text="Spanish"}
+            };
+
             return View();
 
         }
