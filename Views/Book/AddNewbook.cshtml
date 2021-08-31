@@ -1,8 +1,6 @@
 ﻿
 @model BookModel
-@{ 
-    var selectedVal = "Dutch";
-}
+
 <div class="container">
     <h1 class="display-6">Add New Book</h1>
     @if (ViewBag.IsSuccess == true)
@@ -46,7 +44,7 @@
         <div class="form-group">
             <label asp-for="Language"></label>
 
-            <select asp-for="Language" class="form-select" asp-items="new SelectList(ViewBag.Language,selectedVal)">
+            <select asp-for="Language" class="form-select" asp-items="ViewBag.Language">
                 <option value="">Please choose a Language</option>
                
                

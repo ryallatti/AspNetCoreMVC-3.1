@@ -1,6 +1,7 @@
 ﻿using BookStore.Models;
 using BookStore.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,8 +47,9 @@ namespace BookStore.Controllers
             //{
             //    Language ="english"
             //};
-            var Language = new List<string>() { "hindi", "english", "Dutch" };
-            ViewBag.Language = Language;
+
+            //ViewBag.Language = new SelectList(new List<string>() { "hindi", "english", "Dutch" });
+            ViewBag.Language = new SelectList(GetAllLanguage(),"Id", "Name");
             Title = "Add New Book";
             ViewBag.IsSuccess = isSuccess;
             ViewBag.bookId = bookId;
@@ -65,11 +67,22 @@ namespace BookStore.Controllers
                 }
                
             }
-            var Language = new List<string>() { "hindi", "english", "Dutch" };
-            ViewBag.Language = Language;
-            ModelState.AddModelError("InvalidError", "ModelState is invalid");
+
+            ViewBag.Language = new SelectList(GetAllLanguage(), "Id", "Name");
+            //  ModelState.AddModelError("InvalidError", "ModelState is invalid");
             return View();
 
+        }
+        private List<LanguageModel> GetAllLanguage()
+        {
+            var Language = new List<LanguageModel>()
+            {
+                new LanguageModel(){Id ="1", Name="Hindi"},
+                 new LanguageModel(){Id ="2", Name="English"},
+                  new LanguageModel(){Id ="3", Name="Spanish"},
+                  new LanguageModel(){Id ="4", Name="Dutch"}
+            };
+            return Language;
         }
     }
 }
