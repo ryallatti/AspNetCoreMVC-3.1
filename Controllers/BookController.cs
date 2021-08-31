@@ -56,13 +56,13 @@ namespace BookStore.Controllers
             //    Value = x.Id
             //});
          
-            ViewBag.Language = new List<SelectListItem>()
-            {
-                new SelectListItem(){Value ="1", Text="Hindi"},
-                 new SelectListItem(){Value ="2", Text="English" },
-                  new SelectListItem(){Value ="3", Text="Dutch" },
-                 new SelectListItem(){Value ="4", Text="Spanish"}
-            };
+            //ViewBag.Language = new List<SelectListItem>()
+            //{
+            //    new SelectListItem(){Value ="1", Text="Hindi"},
+            //     new SelectListItem(){Value ="2", Text="English" },
+            //      new SelectListItem(){Value ="3", Text="Dutch" },
+            //     new SelectListItem(){Value ="4", Text="Spanish"}
+            //};
 
             Title = "Add New Book";
             ViewBag.IsSuccess = isSuccess;
@@ -81,13 +81,13 @@ namespace BookStore.Controllers
                 }
                
             }
-            ViewBag.Language = new List<SelectListItem>()
-            {
-                new SelectListItem(){Value ="1", Text="Hindi"},
-                 new SelectListItem(){Value ="2", Text="English" },
-                  new SelectListItem(){Value ="3", Text="Dutch" },
-                 new SelectListItem(){Value ="4", Text="Spanish"}
-            };
+            //ViewBag.Language = new List<SelectListItem>()
+            //{
+            //    new SelectListItem(){Value ="1", Text="Hindi"},
+            //     new SelectListItem(){Value ="2", Text="English" },
+            //      new SelectListItem(){Value ="3", Text="Dutch" },
+            //     new SelectListItem(){Value ="4", Text="Spanish"}
+            //};
 
             return View();
 
