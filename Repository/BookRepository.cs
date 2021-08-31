@@ -104,6 +104,7 @@ namespace BookStore.Repository
             {
                 Author = model.Author,
                 Title = model.Title,
+                Language = model.Language,
                 CreatedOn = model.CreatedOn,
                 TotalPages = model.TotalPages.HasValue ? model.TotalPages.Value : 0,
                 UpdatedOn = DateTime.UtcNow

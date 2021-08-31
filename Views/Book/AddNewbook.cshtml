@@ -1,5 +1,8 @@
 ﻿
 @model BookModel
+@{ 
+    var selectedVal = "Dutch";
+}
 <div class="container">
     <h1 class="display-6">Add New Book</h1>
     @if (ViewBag.IsSuccess == true)
@@ -13,7 +16,7 @@
 
     @*if action name and post action name is same then no need to add action attribute in form tag and same as controller*@
     <form method="post" asp-action="AddNewbook">
-     @*ModelOnly, All, None*@
+        @*ModelOnly, All, None*@
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="Title"></label>
@@ -42,7 +45,12 @@
         </div>
         <div class="form-group">
             <label asp-for="Language"></label>
-            <input asp-for="Language" class="form-control" />
+
+            <select asp-for="Language" class="form-select" asp-items="new SelectList(ViewBag.Language,selectedVal)">
+                <option value="">Please choose a Language</option>
+               
+               
+            </select>
             <span asp-validation-for="Language" class="text-danger"></span>
         </div>
         <br />
@@ -50,4 +58,5 @@
             <input type="submit" value="Add book" class="btn btn-primary" />
         </div>
     </form>
+   
 </div>

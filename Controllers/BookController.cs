@@ -42,6 +42,12 @@ namespace BookStore.Controllers
         }
         public ViewResult AddNewbook(bool isSuccess = false, int bookId = 0)
         {
+            //var model = new BookModel()
+            //{
+            //    Language ="english"
+            //};
+            var Language = new List<string>() { "hindi", "english", "Dutch" };
+            ViewBag.Language = Language;
             Title = "Add New Book";
             ViewBag.IsSuccess = isSuccess;
             ViewBag.bookId = bookId;
@@ -59,6 +65,8 @@ namespace BookStore.Controllers
                 }
                
             }
+            var Language = new List<string>() { "hindi", "english", "Dutch" };
+            ViewBag.Language = Language;
             ModelState.AddModelError("InvalidError", "ModelState is invalid");
             return View();
 
