@@ -49,8 +49,13 @@ namespace BookStore.Controllers
             //};
 
             //ViewBag.Language = new SelectList(new List<string>() { "hindi", "english", "Dutch" });
-            ViewBag.Language = new SelectList(GetAllLanguage(),"Id", "Name");
-            Title = "Add New Book";
+           // ViewBag.Language = new SelectList(GetAllLanguage(),"Id", "Name");
+            ViewBag.Language = GetAllLanguage().Select(x => new SelectListItem()
+            {
+                Text = x.Name,
+                Value = x.Id
+            });
+           Title = "Add New Book";
             ViewBag.IsSuccess = isSuccess;
             ViewBag.bookId = bookId;
             return View();
@@ -68,7 +73,12 @@ namespace BookStore.Controllers
                
             }
 
-            ViewBag.Language = new SelectList(GetAllLanguage(), "Id", "Name");
+            //  ViewBag.Language = new SelectList(GetAllLanguage(), "Id", "Name");
+            ViewBag.Language = GetAllLanguage().Select(x => new SelectListItem()
+            {
+                Text = x.Name,
+                Value = x.Id
+            });
             //  ModelState.AddModelError("InvalidError", "ModelState is invalid");
             return View();
 
