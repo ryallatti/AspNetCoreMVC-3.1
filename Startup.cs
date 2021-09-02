@@ -25,10 +25,16 @@ namespace BookStore
          // services.AddDbContext<BookStoreContext>(options => options.UseSqlServer(connectionString: "BookStoreConnectionString"));
 
             services.AddControllersWithViews();
-        
+
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            //To disable client side validation
+            //services.AddRazorPages().AddRazorRuntimeCompilation().AddViewOptions(option =>
+            //{
+            //    option.HtmlHelperOptions.ClientValidationEnabled = false;
+            //});
 #endif
+
             services.AddScoped<BookRepository, BookRepository>();
             services.AddScoped<LanguageRepository, LanguageRepository>();
         }
