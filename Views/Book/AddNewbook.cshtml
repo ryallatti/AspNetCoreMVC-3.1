@@ -11,8 +11,9 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     }
-
+    @*data-ajax="true" data-ajax-complete="myMethodComplete()" data-ajax-success="methodSuccess()" data-ajax-failure="methodFailure()"*@
     @*if action name and post action name is same then no need to add action attribute in form tag and same as controller*@
+    
     <form method="post" asp-action="AddNewbook">
         @*ModelOnly, All, None*@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -46,8 +47,8 @@
 
             <select asp-for="LanguageId" class="form-select" asp-items="ViewBag.Language">
                 <option value="">Please choose a Language</option>
-               
-               
+
+
             </select>
             <span asp-validation-for="LanguageId" class="text-danger"></span>
         </div>
@@ -56,5 +57,18 @@
             <input type="submit" value="Add book" class="btn btn-primary" />
         </div>
     </form>
-   
+
 </div>
+@section scripts {
+<script>
+    //function myMethodComplete(data) {
+    //    alert("Method completed");
+    //}
+    //function methodSuccess(data) {
+    //    alert("Success");
+    //}
+    //function methodFailure(data) {
+    //    alert("Success");
+    //}
+</script>
+}
