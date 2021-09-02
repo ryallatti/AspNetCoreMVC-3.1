@@ -124,7 +124,8 @@ namespace BookStore.Repository
                 LanguageId = model.LanguageId,
                 CreatedOn = model.CreatedOn,
                 TotalPages = model.TotalPages.HasValue ? model.TotalPages.Value : 0,
-                UpdatedOn = DateTime.UtcNow
+                UpdatedOn = DateTime.UtcNow,
+                Category = model.Category
             };
            await _context.Books.AddAsync(newBook);
            await _context.SaveChangesAsync();

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 using BookStore.Data;
+using BookStore.Helpers;
 
 namespace BookStore.Models
 {
@@ -18,6 +19,7 @@ namespace BookStore.Models
         [Required(ErrorMessage = "Please enter the Author of your book")]
         public string Author { get; set; }
         //[StringLength(500, MinimumLength = 30)]
+        [MyCustomAttributeValidation]
         public string Description { get; set; }
         public string Category { get; set; }
         [Required(ErrorMessage = "Please enter the TotalPages of your book")]
