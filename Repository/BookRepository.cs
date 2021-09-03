@@ -26,8 +26,9 @@ namespace BookStore.Repository
                 LanguageId = book.LanguageId,
                 LanguageName = book.Language.Name,
                 TotalPages = book.TotalPages,
-                Description = book.Description
-            }).ToListAsync();
+                Description = book.Description,
+               CoverImgeUrl = (book.CoverImgeUrl.StartsWith("/") == true) ? book.CoverImgeUrl : "/" + book.CoverImgeUrl
+           }).ToListAsync();
         }
         public async Task<BookModel> GetBookById(int id)
         {
@@ -40,8 +41,9 @@ namespace BookStore.Repository
                 LanguageId = book.LanguageId,
                 LanguageName = book.Language.Name,
                 TotalPages = book.TotalPages,
-                Description = book.Description
-            }).FirstOrDefaultAsync();
+                Description = book.Description,
+               CoverImgeUrl = (book.CoverImgeUrl.StartsWith("/") == true) ? book.CoverImgeUrl : "/" + book.CoverImgeUrl
+           }).FirstOrDefaultAsync();
         }
         public async Task<List<BookModel>> SearchBook(string title, string author)
         {
@@ -60,7 +62,8 @@ namespace BookStore.Repository
                         LanguageId = book.LanguageId,
                         LanguageName = book.Language.Name,
                         TotalPages = book.TotalPages,
-                        Description = book.Description
+                        Description = book.Description,
+                        CoverImgeUrl = book.CoverImgeUrl
                     });
                 }
             }
@@ -78,7 +81,8 @@ namespace BookStore.Repository
                 CreatedOn = model.CreatedOn,
                 TotalPages = model.TotalPages.HasValue ? model.TotalPages.Value : 0,
                 UpdatedOn = DateTime.UtcNow,
-                Category = model.Category
+                Category = model.Category,
+                CoverImgeUrl = model.CoverImgeUrl
             };
            await _context.Books.AddAsync(newBook);
            await _context.SaveChangesAsync();

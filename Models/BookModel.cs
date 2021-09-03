@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 using BookStore.Data;
 using BookStore.Helpers;
+using Microsoft.AspNetCore.Http;
 
 namespace BookStore.Models
 {
@@ -32,7 +33,9 @@ namespace BookStore.Models
        public string LanguageName { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
-
-       
+        [Display(Name = "Choose the cover image of your book")]
+        [Required]
+        public IFormFile CoverPhoto { get; set; }
+        public string CoverImgeUrl { get; set; }
     }
 }

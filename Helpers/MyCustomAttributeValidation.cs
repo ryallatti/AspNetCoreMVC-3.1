@@ -13,7 +13,7 @@ namespace BookStore.Helpers
             if(value != null)
             {
                 string description = value.ToString();
-                if(description.Length > 35)
+                if(description.Length > 1)
                 {
                     return ValidationResult.Success;
                 }

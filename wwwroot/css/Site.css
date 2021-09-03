@@ -33,3 +33,7 @@ footer {
     width: auto;
     height: 400px;
 }
+.custom-file{
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
