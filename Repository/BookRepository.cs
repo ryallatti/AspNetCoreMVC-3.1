@@ -32,7 +32,7 @@ namespace BookStore.Repository
         }
         public async Task<BookModel> GetBookById(int id)
         {
-           return await _context.Books.Where(x => x.Id == id).Select(book => new BookModel()
+            return await _context.Books.Where(x => x.Id == id).Select(book => new BookModel()
             {
                 Author = book.Author,
                 Title = book.Title,
@@ -42,8 +42,14 @@ namespace BookStore.Repository
                 LanguageName = book.Language.Name,
                 TotalPages = book.TotalPages,
                 Description = book.Description,
-               CoverImgeUrl = (book.CoverImgeUrl.StartsWith("/") == true) ? book.CoverImgeUrl : "/" + book.CoverImgeUrl
-           }).FirstOrDefaultAsync();
+                CoverImgeUrl = (book.CoverImgeUrl.StartsWith("/") == true) ? book.CoverImgeUrl : "/" + book.CoverImgeUrl,
+                GalleryUrl = book.BookGallery.Select(gallery => new GalleryModel()
+                {
+                   Id=gallery.Id,
+                   Name = gallery.Name,
+                   URL = gallery.URL
+                }).ToList()
+            }).FirstOrDefaultAsync();
         }
         public async Task<List<BookModel>> SearchBook(string title, string author)
         {
@@ -84,6 +90,15 @@ namespace BookStore.Repository
                 Category = model.Category,
                 CoverImgeUrl = model.CoverImgeUrl
             };
+            newBook.BookGallery = new List<Gallery>();
+            foreach (var file in model.GalleryUrl)
+            {
+                newBook.BookGallery.Add(new Gallery()
+                {
+                    Name = file.Name,
+                    URL = file.URL
+                });
+            }
            await _context.Books.AddAsync(newBook);
            await _context.SaveChangesAsync();
             return newBook.Id;

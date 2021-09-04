@@ -1,6 +1,7 @@
 ﻿using BookStore.Models;
 using BookStore.Repository;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -56,19 +57,32 @@ namespace BookStore.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddNewbook(BookModel book)
+        public async Task<IActionResult> AddNewbook(BookModel bookModel)
         {
             if (ModelState.IsValid)
             {
-                if(book.CoverPhoto != null)
+                if(bookModel.CoverPhoto != null)
                 {
-                    string imgFolder = "book/CoverImages/";
-                    imgFolder += Guid.NewGuid().ToString() + "-" + book.CoverPhoto.FileName;
-                    string serverImgFolder = Path.Combine(_webHostEnvironment.WebRootPath, imgFolder);
-                    await book.CoverPhoto.CopyToAsync(new FileStream(serverImgFolder, FileMode.Create));
-                    book.CoverImgeUrl = "/"+ imgFolder;
+                    string imgFolder = "book/cover/";
+                    bookModel.CoverImgeUrl = await UpladImage(imgFolder, bookModel.CoverPhoto);
                 }
-                int id = await _bookRepository.AddNewBook(book);
+                if(bookModel.GalleryFiles != null)
+                {
+                    string imgFolder = "book/gallery/";
+                    bookModel.GalleryUrl = new List<GalleryModel>();
+
+                    foreach (var file in bookModel.GalleryFiles)
+                    {
+                        var gallery = new GalleryModel()
+                        {
+                            Name = file.FileName,
+                            URL = await UpladImage(imgFolder, file)
+                        };
+                        bookModel.GalleryUrl.Add(gallery);
+                    }
+
+                }
+                int id = await _bookRepository.AddNewBook(bookModel);
                 if (id > 0)
                 {
                     return RedirectToAction(nameof(AddNewbook), new { isSuccess = true, bookId = id });
@@ -79,6 +93,13 @@ namespace BookStore.Controllers
             ViewBag.Language = new SelectList(await _LanguageRepository.GetLanguages(), "Id", "Name");
             return View();
 
+        }
+        private async Task<string> UpladImage(string imgFolder, IFormFile file)
+        {
+            imgFolder += Guid.NewGuid().ToString() + "-" + file.FileName;
+            string serverImgFolder = Path.Combine(_webHostEnvironment.WebRootPath, imgFolder);
+            await file.CopyToAsync(new FileStream(serverImgFolder, FileMode.Create));
+            return  "/" + imgFolder;
         }
        
     }

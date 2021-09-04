@@ -60,6 +60,32 @@ namespace BookStore.Migrations
                     b.ToTable("Books");
                 });
 
+            modelBuilder.Entity("BookStore.Data.Gallery", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("URL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("booksId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("booksId");
+
+                    b.ToTable("Gallery");
+                });
+
             modelBuilder.Entity("BookStore.Data.Language", b =>
                 {
                     b.Property<int>("Id")
@@ -85,6 +111,13 @@ namespace BookStore.Migrations
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BookStore.Data.Gallery", b =>
+                {
+                    b.HasOne("BookStore.Data.Books", "books")
+                        .WithMany("BookGallery")
+                        .HasForeignKey("booksId");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookStore.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,7 +34,8 @@ namespace BookStore.Migrations
                     TotalPages = table.Column<int>(nullable: false),
                     LanguageId = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: true),
-                    UpdatedOn = table.Column<DateTime>(nullable: true)
+                    UpdatedOn = table.Column<DateTime>(nullable: true),
+                    CoverImgeUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,14 +48,44 @@ namespace BookStore.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Gallery",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookId = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    URL = table.Column<string>(nullable: true),
+                    booksId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Gallery", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Gallery_Books_booksId",
+                        column: x => x.booksId,
+                        principalTable: "Books",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Books_LanguageId",
                 table: "Books",
                 column: "LanguageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Gallery_booksId",
+                table: "Gallery",
+                column: "booksId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Gallery");
+
             migrationBuilder.DropTable(
                 name: "Books");
 

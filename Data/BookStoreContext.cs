@@ -15,6 +15,8 @@ namespace BookStore.Data
         public DbSet<Books> Books { get; set; }
         public DbSet<Language> language { get; set; }
 
+        public DbSet<Gallery> Gallery { get; set; }
+
         //if we add connection string in startup file then no need to add here
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

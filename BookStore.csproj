@@ -19,8 +19,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Migrations\" />
 	  <Folder Include="Views\Shared\" />
-	  <Folder Include="wwwroot\book\CoverImages\" />
+	  <Folder Include="wwwroot\book\cover\" />
+	  <Folder Include="wwwroot\book\gallery\" />
 	  <Folder Include="wwwroot\js\" />
 	</ItemGroup>
 
