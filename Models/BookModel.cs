@@ -42,5 +42,10 @@ namespace BookStore.Models
         public IFormFileCollection GalleryFiles { get; set; }
 
         public List<GalleryModel> GalleryUrl { get; set; }
+
+        [Display(Name = "Choose the pdf of your book")]
+        [Required]
+        public IFormFile BookPdf { get; set; }
+        public string PDFUrl { get; set; }
     }
 }

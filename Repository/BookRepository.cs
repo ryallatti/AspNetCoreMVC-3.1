@@ -27,7 +27,8 @@ namespace BookStore.Repository
                 LanguageName = book.Language.Name,
                 TotalPages = book.TotalPages,
                 Description = book.Description,
-               CoverImgeUrl = (book.CoverImgeUrl.StartsWith("/") == true) ? book.CoverImgeUrl : "/" + book.CoverImgeUrl
+               CoverImgeUrl = (book.CoverImgeUrl.StartsWith("/") == true) ? book.CoverImgeUrl : "/" + book.CoverImgeUrl,
+               PDFUrl = book.PDFUrl
            }).ToListAsync();
         }
         public async Task<BookModel> GetBookById(int id)
@@ -48,7 +49,8 @@ namespace BookStore.Repository
                    Id=gallery.Id,
                    Name = gallery.Name,
                    URL = gallery.URL
-                }).ToList()
+                }).ToList(),
+                PDFUrl = book.PDFUrl
             }).FirstOrDefaultAsync();
         }
         public async Task<List<BookModel>> SearchBook(string title, string author)
@@ -69,7 +71,8 @@ namespace BookStore.Repository
                         LanguageName = book.Language.Name,
                         TotalPages = book.TotalPages,
                         Description = book.Description,
-                        CoverImgeUrl = book.CoverImgeUrl
+                        CoverImgeUrl = book.CoverImgeUrl,
+                        PDFUrl = book.PDFUrl
                     });
                 }
             }
@@ -88,7 +91,8 @@ namespace BookStore.Repository
                 TotalPages = model.TotalPages.HasValue ? model.TotalPages.Value : 0,
                 UpdatedOn = DateTime.UtcNow,
                 Category = model.Category,
-                CoverImgeUrl = model.CoverImgeUrl
+                CoverImgeUrl = model.CoverImgeUrl,
+                PDFUrl = model.PDFUrl
             };
             newBook.BookGallery = new List<Gallery>();
             foreach (var file in model.GalleryUrl)

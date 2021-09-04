@@ -82,6 +82,11 @@ namespace BookStore.Controllers
                     }
 
                 }
+                if (bookModel.BookPdf != null)
+                {
+                    string imgFolder = "book/bookPdf/";
+                    bookModel.PDFUrl = await UpladImage(imgFolder, bookModel.BookPdf);
+                }
                 int id = await _bookRepository.AddNewBook(bookModel);
                 if (id > 0)
                 {
