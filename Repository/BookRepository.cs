@@ -31,6 +31,22 @@ namespace BookStore.Repository
                PDFUrl = book.PDFUrl
            }).ToListAsync();
         }
+        public async Task<List<BookModel>> GetTopBooksAsync(int count)
+        {
+            return await _context.Books.Select(book => new BookModel()
+            {
+                Author = book.Author,
+                Title = book.Title,
+                Category = book.Category,
+                Id = book.Id,
+                LanguageId = book.LanguageId,
+                LanguageName = book.Language.Name,
+                TotalPages = book.TotalPages,
+                Description = book.Description,
+                CoverImgeUrl = (book.CoverImgeUrl.StartsWith("/") == true) ? book.CoverImgeUrl : "/" + book.CoverImgeUrl,
+                PDFUrl = book.PDFUrl
+            }).Take(count).ToListAsync();
+        }
         public async Task<BookModel> GetBookById(int id)
         {
             return await _context.Books.Where(x => x.Id == id).Select(book => new BookModel()

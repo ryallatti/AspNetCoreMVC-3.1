@@ -3,9 +3,9 @@
     ViewData["Title"] = "Index";
 }
 
-@{
+@*@{
     var data = ViewBag.data;
-}
+}*@
 
 @*@data.id  @data.Name*@
 
@@ -24,20 +24,8 @@
 
 <div class="bg-light">
     <div class="container">
-        <div class="row">
-            @*<h1> Top books</h1>*@
-            <big>Top books</big>
-            
-            <div class="col-md-4">
-              <partial name="_ThumbnailImage" model="new BookModel()"/>
-            </div>
-            <div class="col-md-4">
-                <partial name="_ThumbnailImage" model="new BookModel()"/>
-            </div>
-            <div class="col-md-4">
-                <partial name="_ThumbnailImage" model="new BookModel()"/>
-            </div>
-        </div>
+    
+        <vc:top-books count="2"></vc:top-books>
     </div>
 </div>
 
