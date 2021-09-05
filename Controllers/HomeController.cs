@@ -20,10 +20,7 @@ namespace BookStore.Controllers
         public BookModel book { get; set; }
         public ViewResult Index()
         {
-            //dynamic data = new ExpandoObject();
-            //data.id = 3;
-            //data.Name = "rekha";
-            //ViewBag.data = data;
+         
             return View();
             
         }

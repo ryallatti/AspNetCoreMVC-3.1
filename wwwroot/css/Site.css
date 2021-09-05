@@ -1,26 +1,39 @@
-﻿body {
+﻿/** {
+    box-sizing:border-box;
+    padding: 0;
+    margin: 0;
+}*/
+body {
+    display: flex;
+    flex-direction: column;
 }
 .logo{
     height: 200px;
     width: 200px;
 }
 /* sticky footer styles...........................*/
-html{
-    position:relative;
-    min-height:100%;
+html {
+    min-height: 100%;
 }
-body{
-    /*margin bottom from footer*/
-    margin-bottom:60px; 
+
+.fullPage {
+    min-height: 80vh;
 }
-.footer{
-    position:relative;
-    bottom:0;
-    width:100%;
-    white-space:nowrap;
-    line-height:60px !important;
+
+footer {
+    bottom: 0;
+    height: 60px;
+    white-space: nowrap;
+    line-height: 60px !important;
+}
+.membership-img{
+    width:80%;
 }
 .img-responsive {
     width: auto;
     height: 400px;
+}
+.custom-file{
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
 }

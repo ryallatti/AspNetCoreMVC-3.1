@@ -3,15 +3,16 @@
     ViewData["Title"] = "Index";
 }
 
-@{
+@*@{
     var data = ViewBag.data;
-}
+}*@
 
 @*@data.id  @data.Name*@
 
 <section class="jumbotron text-center">
     <div class="container">
         <h1>Welcome to Bookstore</h1>
+   
         <p class="lead text-muted">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
@@ -21,63 +22,10 @@
     </div>
 </section>
 
-<div class="py-5 bg-light">
+<div class="bg-light">
     <div class="container">
-        <div class="row">
-            <h1> Top books</h1>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-
-                    <img src="~/images/book.jpg" alt="book" class="card-img-top" />
-                    <div class="card-body">
-
-                        <p class="card-text">This section will be used to display the short decription of book.</p>
-                        <div class="d-flex justify-content-between align-content-center">
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
-                            </div>
-                            <small class="text-muted">Author name</small>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-
-
-                    <img src="~/images/book.jpg" alt="book" class="card-img-top" />
-                    <div class="card-body">
-
-                        <p class="card-text">This section will be used to display the short decription of book.</p>
-                        <div class="d-flex justify-content-between align-content-center">
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
-                            </div>
-                            <small class="text-muted">Author name</small>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="~/images/book.jpg" alt="book" class="card-img-top" />
-
-                    <div class="card-body">
-
-                        <p class="card-text">This section will be used to display the short decription of book.</p>
-                        <div class="d-flex justify-content-between align-content-center">
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
-                            </div>
-                            <small class="text-muted">Author name</small>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+    
+        <vc:top-books count="2"></vc:top-books>
     </div>
 </div>
 

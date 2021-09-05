@@ -1,0 +1,22 @@
+﻿@model BookModel
+<div class="card mb-4 shadow-sm">
+    <img src="@(string.IsNullOrEmpty(Model.CoverImgeUrl) ? "~/images/the-end-of-a-book-1268x845.jpeg": Model.CoverImgeUrl)" alt="book" class="img-thumbnail" asp-append-version="true" />
+    <div class="card-body">
+        <h3 class="card-title">@(string.IsNullOrEmpty(Model.Title) ?"Default":Model.Title)</h3>
+        <p class="card-text">@(string.IsNullOrEmpty(Model.Description) ? "Description not available" : Model.Description)</p>
+        <div class="d-flex justify-content-between align-content-center">
+            <div class="btn-group">
+                @if (Model.Id != 0)
+                {
+                    <a asp-route="bookDetailsRoute" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-primary">View Details</a>
+                }
+               else
+                {
+                  <a class="btn btn-sm btn-outline-primary disabled">View Details</a>
+                }
+
+            </div>
+            <small class="text-muted">@(string.IsNullOrEmpty(Model.Author) ? "Author" : Model.Author)</small>
+        </div>
+    </div>
+</div>
