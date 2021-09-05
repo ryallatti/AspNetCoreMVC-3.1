@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Repository
 {
-    public class BookRepository
+    public class BookRepository : IBookRepository
     {
         public readonly BookStoreContext _context = null;
         public BookRepository(BookStoreContext context)
@@ -17,7 +17,7 @@ namespace BookStore.Repository
         }
         public async Task<List<BookModel>> GetAllBooks()
         {
-           return await _context.Books.Select(book => new BookModel()
+            return await _context.Books.Select(book => new BookModel()
             {
                 Author = book.Author,
                 Title = book.Title,
@@ -27,9 +27,9 @@ namespace BookStore.Repository
                 LanguageName = book.Language.Name,
                 TotalPages = book.TotalPages,
                 Description = book.Description,
-               CoverImgeUrl = (book.CoverImgeUrl.StartsWith("/") == true) ? book.CoverImgeUrl : "/" + book.CoverImgeUrl,
-               PDFUrl = book.PDFUrl
-           }).ToListAsync();
+                CoverImgeUrl = (book.CoverImgeUrl.StartsWith("/") == true) ? book.CoverImgeUrl : "/" + book.CoverImgeUrl,
+                PDFUrl = book.PDFUrl
+            }).ToListAsync();
         }
         public async Task<List<BookModel>> GetTopBooksAsync(int count)
         {
@@ -62,9 +62,9 @@ namespace BookStore.Repository
                 CoverImgeUrl = (book.CoverImgeUrl.StartsWith("/") == true) ? book.CoverImgeUrl : "/" + book.CoverImgeUrl,
                 GalleryUrl = book.BookGallery.Select(gallery => new GalleryModel()
                 {
-                   Id=gallery.Id,
-                   Name = gallery.Name,
-                   URL = gallery.URL
+                    Id = gallery.Id,
+                    Name = gallery.Name,
+                    URL = gallery.URL
                 }).ToList(),
                 PDFUrl = book.PDFUrl
             }).FirstOrDefaultAsync();
@@ -72,7 +72,7 @@ namespace BookStore.Repository
         public async Task<List<BookModel>> SearchBook(string title, string author)
         {
             var books = new List<BookModel>();
-            var AllBooks = await _context.Books.Where(x=>x.Title == title && x.Author == author).ToListAsync();
+            var AllBooks = await _context.Books.Where(x => x.Title == title && x.Author == author).ToListAsync();
             if (AllBooks?.Any() == true)
             {
                 foreach (var book in AllBooks)
@@ -94,7 +94,7 @@ namespace BookStore.Repository
             }
             return books;
         }
-      
+
         public async Task<int> AddNewBook(BookModel model)
         {
             //assigning model to entity class (nothing but table)
@@ -119,8 +119,8 @@ namespace BookStore.Repository
                     URL = file.URL
                 });
             }
-           await _context.Books.AddAsync(newBook);
-           await _context.SaveChangesAsync();
+            await _context.Books.AddAsync(newBook);
+            await _context.SaveChangesAsync();
             return newBook.Id;
         }
     }

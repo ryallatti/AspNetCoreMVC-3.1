@@ -15,13 +15,13 @@ namespace BookStore.Controllers
 {
     public class BookController : Controller
     {
-        private readonly BookRepository _bookRepository= null;
-        private readonly LanguageRepository _LanguageRepository = null; 
+        private readonly IBookRepository _bookRepository= null;
+        private readonly ILanguageRepository _LanguageRepository = null; 
         private readonly IWebHostEnvironment _webHostEnvironment = null;
 
         [ViewData]
         public string Title { get; set; }
-        public BookController(BookRepository bookRepository,LanguageRepository languageRepository, IWebHostEnvironment webHostEnvironment)
+        public BookController(IBookRepository bookRepository, ILanguageRepository languageRepository, IWebHostEnvironment webHostEnvironment)
         {
             _bookRepository = bookRepository;
             _LanguageRepository = languageRepository;
