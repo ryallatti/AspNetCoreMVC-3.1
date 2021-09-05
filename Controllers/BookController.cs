@@ -50,7 +50,7 @@ namespace BookStore.Controllers
         }
         public async Task<ViewResult> AddNewbook(bool isSuccess = false, int bookId = 0)
         {
-            ViewBag.Language = new SelectList (await _LanguageRepository.GetLanguages(), "Id", "Name");
+            //ViewBag.Language = new SelectList (await _LanguageRepository.GetLanguages(), "Id", "Name");
             Title = "Add New Book";
             ViewBag.IsSuccess = isSuccess;
             ViewBag.bookId = bookId;
@@ -95,7 +95,7 @@ namespace BookStore.Controllers
                
             }
 
-            ViewBag.Language = new SelectList(await _LanguageRepository.GetLanguages(), "Id", "Name");
+            //ViewBag.Language = new SelectList(await _LanguageRepository.GetLanguages(), "Id", "Name");
             return View();
 
         }
