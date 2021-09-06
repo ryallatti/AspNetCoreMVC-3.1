@@ -108,6 +108,7 @@ namespace BookStore.Repository
                 UpdatedOn = DateTime.UtcNow,
                 Category = model.Category,
                 CoverImgeUrl = model.CoverImgeUrl,
+                Description = model.Description,
                 PDFUrl = model.PDFUrl
             };
             newBook.BookGallery = new List<Gallery>();

@@ -5,11 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Dynamic;
 using BookStore.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace BookStore.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IConfiguration _configuration;
+
+        public HomeController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         [ViewData]
         public string CustomProperty { get; set; }
         
@@ -20,7 +27,10 @@ namespace BookStore.Controllers
         public BookModel book { get; set; }
         public ViewResult Index()
         {
-         
+            var appName = _configuration["AppName"];
+            var Key1 = _configuration["InfoObj:Key1"];
+            var Key2 = _configuration["InfoObj:Key2"];
+            var Key3 = _configuration["InfoObj:Key3:Key3Obj"];
             return View();
             
         }
