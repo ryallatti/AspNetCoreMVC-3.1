@@ -27,10 +27,8 @@ namespace BookStore.Controllers
         public BookModel book { get; set; }
         public ViewResult Index()
         {
-            var appName = _configuration["AppName"];
-            var Key1 = _configuration["InfoObj:Key1"];
-            var Key2 = _configuration["InfoObj:Key2"];
-            var Key3 = _configuration["InfoObj:Key3:Key3Obj"];
+           
+            var result = _configuration.GetValue<bool>("NewBookAlert:DisplayNewBookAlert");
             return View();
             
         }
