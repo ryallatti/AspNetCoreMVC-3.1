@@ -27,10 +27,13 @@ namespace BookStore.Controllers
         public BookModel book { get; set; }
         public ViewResult Index()
         {
-            var newBook = _configuration.GetSection("NewBookAlert");
-            var result = newBook.GetValue<bool>("DisplayNewBookAlert");
-            var result1 = newBook.GetValue<string>("BookName");
-
+            //var newBook = _configuration.GetSection("NewBookAlert");
+            //var result = newBook.GetValue<bool>("DisplayNewBookAlert");
+            //var result1 = newBook.GetValue<string>("BookName");
+            var newBookalert = new NewBookAlertConfig();
+            _configuration.Bind("NewBookAlert", newBookalert);
+            bool isDisplay = newBookalert.DisplayNewBookAlert;
+            var bookName = newBookalert.BookName;
             return View();
             
         }
