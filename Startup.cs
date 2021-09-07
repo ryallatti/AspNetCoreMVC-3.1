@@ -4,6 +4,7 @@ using BookStore.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,7 +32,8 @@ namespace BookStore
         {
            services.AddDbContext<BookStoreContext>(options =>options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
             //options.UseSqlServer(_configuration["DefaultConnection"]));
-            
+
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<BookStoreContext>();
             services.AddControllersWithViews();
 
 #if DEBUG
@@ -44,7 +46,8 @@ namespace BookStore
 #endif
 
             services.AddScoped<IBookRepository, BookRepository>();
-            services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<ILanguageRepository, LanguageRepository>(); 
+            services.AddScoped<IAccountRepository, AccountRepository>();
       
             services.AddSingleton<IMessageRepository, MessageRepository>();
             services.Configure<NewBookAlertConfig>("InternalBook",_configuration.GetSection("NewBookAlert"));
@@ -65,6 +68,7 @@ namespace BookStore
 
             //Enabling Routing 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

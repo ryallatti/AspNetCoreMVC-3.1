@@ -48,7 +48,7 @@ namespace BookStore.Controllers
 
             return await _bookRepository.SearchBook(title, Author);
         }
-        public async Task<ViewResult> AddNewbook(bool isSuccess = false, int bookId = 0)
+        public ViewResult AddNewbook(bool isSuccess = false, int bookId = 0)
         {
             //ViewBag.Language = new SelectList (await _LanguageRepository.GetLanguages(), "Id", "Name");
             Title = "Add New Book";
