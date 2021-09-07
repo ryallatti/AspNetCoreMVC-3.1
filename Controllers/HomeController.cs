@@ -6,16 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 using System.Dynamic;
 using BookStore.Models;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using BookStore.Repository;
 
 namespace BookStore.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IConfiguration _configuration;
+        private readonly NewBookAlertConfig _newBookAlertConfig;
+        private readonly NewBookAlertConfig _thirdPartyBookalert;
+        private readonly IMessageRepository _messageRepository;
 
-        public HomeController(IConfiguration configuration)
+        public HomeController(IOptionsSnapshot<NewBookAlertConfig> newBookAlertConfig, IMessageRepository messageRepository)
         {
-            _configuration = configuration;
+            _newBookAlertConfig = newBookAlertConfig.Get("InternalBook");
+            _thirdPartyBookalert = newBookAlertConfig.Get("ThirdParty");
+            _messageRepository = messageRepository;
         }
         [ViewData]
         public string CustomProperty { get; set; }
@@ -27,13 +33,14 @@ namespace BookStore.Controllers
         public BookModel book { get; set; }
         public ViewResult Index()
         {
-            //var newBook = _configuration.GetSection("NewBookAlert");
-            //var result = newBook.GetValue<bool>("DisplayNewBookAlert");
-            //var result1 = newBook.GetValue<string>("BookName");
-            var newBookalert = new NewBookAlertConfig();
-            _configuration.Bind("NewBookAlert", newBookalert);
-            bool isDisplay = newBookalert.DisplayNewBookAlert;
-            var bookName = newBookalert.BookName;
+           
+            //var newBookalert = new NewBookAlertConfig();
+          
+            bool isDisplay = _newBookAlertConfig.DisplayNewBookAlert;
+            //var bookName = _newBookAlertConfig.BookName;
+            var bookName = _messageRepository.GetName();
+            var ThirdParty = _thirdPartyBookalert.BookName;
+            var internalBook = _newBookAlertConfig.BookName;
             return View();
             
         }

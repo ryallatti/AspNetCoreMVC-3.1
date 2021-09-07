@@ -1,4 +1,5 @@
 using BookStore.Data;
+using BookStore.Models;
 using BookStore.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,6 +45,10 @@ namespace BookStore
 
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
+      
+            services.AddSingleton<IMessageRepository, MessageRepository>();
+            services.Configure<NewBookAlertConfig>("InternalBook",_configuration.GetSection("NewBookAlert"));
+            services.Configure<NewBookAlertConfig>("ThirdParty",_configuration.GetSection("ThirdPartyBook"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
