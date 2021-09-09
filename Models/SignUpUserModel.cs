@@ -23,5 +23,12 @@ namespace BookStore.Models
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
 
+        [Display(Name = "First Name")]
+        [Required(ErrorMessage = "Please confirm your First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
     }
 }

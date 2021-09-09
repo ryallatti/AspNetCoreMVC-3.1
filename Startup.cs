@@ -33,7 +33,7 @@ namespace BookStore
            services.AddDbContext<BookStoreContext>(options =>options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
             //options.UseSqlServer(_configuration["DefaultConnection"]));
 
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<BookStoreContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<BookStoreContext>();
             services.AddControllersWithViews();
 
 #if DEBUG
