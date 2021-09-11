@@ -11,10 +11,12 @@ namespace BookStore.Repository
     public class AccountRepository : IAccountRepository
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AccountRepository(UserManager<ApplicationUser> userManager)
+        public AccountRepository(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
      
@@ -31,6 +33,14 @@ namespace BookStore.Repository
             var result =await _userManager.CreateAsync(user, signUpUserModel.Password);
             return result;
         }
-     
+        public async Task<SignInResult> PasswordSignAsync(SignInModel signInModel)
+        {
+            var res = await _signInManager.PasswordSignInAsync(signInModel.Email, signInModel.Password, signInModel.RememberMe, false);
+            return res;
+        }
+        public async Task SignOutAsync()
+        {
+            await _signInManager.SignOutAsync();
+        }
     }
 }

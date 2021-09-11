@@ -35,14 +35,24 @@ namespace BookStore
 
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<BookStoreContext>();
             services.AddControllersWithViews();
-
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequiredLength = 5;
+                options.Password.RequiredUniqueChars = 1;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+            });
+            services.ConfigureApplicationCookie(config=>
+            {
+                //config.LoginPath = "/SignIn";
+                //OR read from appsettings
+                config.LoginPath = _configuration["Application:LoginPath"];
+            });
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
-            //To disable client side validation
-            //services.AddRazorPages().AddRazorRuntimeCompilation().AddViewOptions(option =>
-            //{
-            //    option.HtmlHelperOptions.ClientValidationEnabled = false;
-            //});
+          
 #endif
 
             services.AddScoped<IBookRepository, BookRepository>();
@@ -69,7 +79,7 @@ namespace BookStore
             //Enabling Routing 
             app.UseRouting();
             app.UseAuthentication();
-
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
 

@@ -13,41 +13,42 @@
     <link href="~/css/Site.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
-<body id="IdSignUp">
+<body id="IdSignUp" style="background-color:gainsboro;">
 
     <div class="container">
-  
+        &nbsp;&nbsp;
         <div class="row">
             <h4>Sign Up</h4><hr />
             <div class="col-md-4">
                 <form asp-action="SignUp">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
-
-                        <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ConfirmPassword" class="control-label"></label>
-                        <input asp-for="ConfirmPassword" class="form-control" />
-                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
                         <label asp-for="FirstName" class="control-label"></label>
-                        <input asp-for="FirstName" class="form-control" />
+                        <input asp-for="FirstName" class="form-control" autocomplete="off" />
                         <span asp-validation-for="FirstName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="LastName" class="control-label"></label>
-                        <input asp-for="LastName" class="form-control" />
+                        <input asp-for="LastName" class="form-control" autocomplete="off" />
                         <span asp-validation-for="LastName" class="text-danger"></span>
                     </div>
+                    <div class="form-group">
+
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" autocomplete="off" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" autocomplete="off" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword" class="control-label"></label>
+                        <input asp-for="ConfirmPassword" class="form-control" autocomplete="off" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+
                     &nbsp;
                     <div class="form-group">
                         <input type="submit" value="Create" class="btn btn-primary" />
@@ -56,13 +57,13 @@
 
             </div>
             <div class="col-md-8">
-
-                <img src="~/images/create-account-illustration-vector.jpg" />
+                <img class="img-fluid" src="~/images/sign-up-form-button-graphic-concept_53876-101286.jpg" />
+               
             </div>
         </div>
 
         <div>
-            <a asp-action="Index">Back to List</a>
+            <p>Click <a asp-action="SignIn" asp-controller="Account">here</a> to SignIn.</p>
         </div>
     </div>
 

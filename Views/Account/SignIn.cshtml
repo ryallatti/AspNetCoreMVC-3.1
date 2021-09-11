@@ -1,0 +1,60 @@
+﻿@model BookStore.Models.SignInModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignIn</title>
+    <link href="~/css/Site.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body style="background-color:lightgray;">
+
+
+    <div class="container">
+        &nbsp;&nbsp;
+        <h4>SignInModel</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="SignIn">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" autocomplete="off"/>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" autocomplete="off"/>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-8">
+                <img class="img-fluid" src="~/images/login-bg1_0.jpg" />
+          
+            </div>
+        </div>
+        <div>
+            <p>Click <a asp-action="SignUp" asp-controller="Account">here</a> to SignUp.</p>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

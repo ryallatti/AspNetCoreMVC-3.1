@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace BookStore.Controllers
@@ -48,6 +49,7 @@ namespace BookStore.Controllers
 
             return await _bookRepository.SearchBook(title, Author);
         }
+        [Authorize] // available only for Logined user
         public ViewResult AddNewbook(bool isSuccess = false, int bookId = 0)
         {
             //ViewBag.Language = new SelectList (await _LanguageRepository.GetLanguages(), "Id", "Name");
